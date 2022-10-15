@@ -1,8 +1,8 @@
-zipfile
-fitparse
-fitdecode
-numpy
-pandas
-streamlit
-tqdm
-matplotlib
+fitparse==1.2.0
+fitdecode==0.10.0
+matplotlib==3.4.2
+numpy==1.21.0
+pandas==1.4.2
+streamlit==1.10.0
+tqdm==4.62.3
+zipfile-deflate64==0.2.0
