@@ -1,7 +1,7 @@
 # Code for producing cycling workout summary graph
-This repo houses code for a Streamlit-hosted app that takes in a .fit file and returns a graph with a similar color scheme to Zwift workout summary graphs.  The app can be accessed at https://gdurante2019-graph-workout-str-graph-from-fitfile-062222-5a5ikb.streamlitapp.com/.
+This repo houses updated code for a Streamlit-hosted app that takes in either a .fit file or a .zip of a fitfile and returns a graph with a similar color scheme to Zwift workout summary graphs.  The app's link will be posted once testing is completed.
 
-_Note:_  these graphs are created from .fit files, not by Zwift, and no Zwift branding is implied or endorsed by Zwift.  
+_Note:_  these graphs are created from .fit files from any workout, whether on Zwift or not; no Zwift branding is implied and this effort is not connected to Zwift.  It's just a way for Zwift enthusiasts to compare workouts (even those from outdoor rides!) quickly.  
 
 ## Purpose
 The inspiration for this project comes from discussions with fellow cycling enthusiasts who race in the Zwift Racing League on the Backpedal  (BAKPDL) team and would like to share their workout summary graphs from indoor trainer rides or outdoor rides in a simple, standardized way in chat discussions.  The utility of generating graphs in this format is to make it easy for community members to understand, at a glance, the workout efforts of their teammates and fellow cyclists.
