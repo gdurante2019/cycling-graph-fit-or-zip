@@ -29,17 +29,16 @@ else:
 
 # Import .fit file 
 if uploaded_file.endswith('.zip'):
-    zip_filename = uploaded_file
     file_endswith = ".fit"
 
     try:
-        with ZipFile(zip_filename, 'r') as zObject:
+        with ZipFile(uploaded_file, 'r') as zObject:
             for file in zObject.namelist():
                 if file.endswith(file_endswith):
                     zObject.extract(file)
             print("Extracted all ", file_endswith)
             uploaded_file = file
-            print(file)
+            print(uploaded_file)
     except:
         print("Invalid file")
 
