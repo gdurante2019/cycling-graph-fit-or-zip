@@ -1,0 +1,8 @@
+zipfile
+fitparse
+fitdecode
+numpy
+pandas
+streamlit
+tqdm
+matplotlib
