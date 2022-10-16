@@ -49,8 +49,7 @@ if uploaded_file:
 else: 
     st.write("Please upload your workout file to generate graph.")
 
-if len(uploaded_file) != 0:
-    filename = process_file(uploaded_file)
+filename = process_file(uploaded_file)
 
 # +
 # # If zip file, extract contents
