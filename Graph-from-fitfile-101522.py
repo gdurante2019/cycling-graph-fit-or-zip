@@ -41,10 +41,7 @@ if uploaded_file.type == "application/zip":
                     zObject.extract(file)
                     uploaded_file = file
                     print("Extracted ", uploaded_file)
-        
-# else:
-#     test=Image.open(file)
-#     st.image(test)
+
 
 
 # +
@@ -64,16 +61,19 @@ if uploaded_file.type == "application/zip":
 #             print(filename)
 #     except:
 #         print("Invalid file")
-# -
 
 
+# +
 # Enter FTP value to determine workout zones in graph
+
 ftp = st.text_input(label="Enter FTP in watts (whole numbers only):  ", max_chars=3, key='ftp')
+
 if ftp!="":
     st.write(f"\nYour FTP has been recorded as {ftp} watts.")
     ftp = float(ftp)
 else:
     st.write("Please enter your ftp in the box; otherwise, graph will not display.")
+# -
 
 # Instruction to scroll down to the bottom of the page for the chart
 st.write("Scroll to the bottom to view and download graph.")
