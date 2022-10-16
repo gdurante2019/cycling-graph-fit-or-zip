@@ -159,7 +159,7 @@ def convert_to_arr(df_cleaned, freq):
 
 # Run functions:
 if uploaded_file:
-    df = parse_fitfile(uploaded_file)
+    df = parse_fitfile(filename)
     df_cleaned = df_clean_trim(df)
     date_str, num_datapoints, workout_minutes, rec_freq, freq = workout_date_time_freq(df)
     watts, max_watts, minutes, max_pwr_timestamp, hr, max_hr, max_hr_timestamp = convert_to_arr(df_cleaned, freq)
