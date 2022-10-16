@@ -27,23 +27,39 @@ if uploaded_file:
 else: 
     st.write("Please upload your workout file to generate graph.")
 
-# +
-# Extract .fit file from .zip upload (if applicable) 
-
-st.write("filename: ", uploaded_file.name)
-if filename.endswith('.zip'):
+# If zip file, extract contents
+if uploaded_file.type == "application/zip":
     file_endswith = ".fit"
-
+    
     try:
-        with ZipFile(filename, 'r') as zObject:
+        with ZipFile(uploaded_file.name, 'r') as zObject:
             for file in zObject.namelist():
                 if file.endswith(file_endswith):
                     zObject.extract(file)
-            print("Extracted all ", file_endswith)
+            print("Extracted ", file_endswith)
             filename = file
             print(filename)
     except:
-        print("Invalid file")
+        print("Invalid file")    
+
+
+# +
+# # Extract .fit file from .zip upload (if applicable) 
+
+# st.write("filename: ", uploaded_file.name)
+# if filename.endswith('.zip'):
+#     file_endswith = ".fit"
+
+#     try:
+#         with ZipFile(filename, 'r') as zObject:
+#             for file in zObject.namelist():
+#                 if file.endswith(file_endswith):
+#                     zObject.extract(file)
+#             print("Extracted all ", file_endswith)
+#             filename = file
+#             print(filename)
+#     except:
+#         print("Invalid file")
 # -
 
 
