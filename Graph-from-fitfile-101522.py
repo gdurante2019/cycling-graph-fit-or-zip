@@ -20,27 +20,31 @@ from matplotlib.text import Annotation
 # Title of Streamlit app
 st.title('Cycling Workout Graph')
 
-# Import .fit file 
+# Upload file
 uploaded_file = st.file_uploader("Type or copy/paste filename, including .fit or .zip extension:  ", type=['fit', 'zip'], key='fitfile')
 if uploaded_file:
     st.write(f'You uploaded file "{uploaded_file.name}"')
 else: 
     st.write("Please upload your workout file to generate graph.")
 
-# Import .fit file 
-if uploaded_file.endswith('.zip'):
+# +
+# Extract .fit file from .zip upload (if applicable) 
+
+st.write("filename: ", uploaded_file.name)
+if filename.endswith('.zip'):
     file_endswith = ".fit"
 
     try:
-        with ZipFile(uploaded_file, 'r') as zObject:
+        with ZipFile(filename, 'r') as zObject:
             for file in zObject.namelist():
                 if file.endswith(file_endswith):
                     zObject.extract(file)
             print("Extracted all ", file_endswith)
-            uploaded_file = file
-            print(uploaded_file)
+            filename = file
+            print(filename)
     except:
         print("Invalid file")
+# -
 
 
 # Enter FTP value to determine workout zones in graph
@@ -63,8 +67,8 @@ st.write("Scroll to the bottom to view and download graph.")
 # loop to avoid timing issues. Then we are looping through the file, append 
 # the records to a list and convert the list to a pandas dataframe."_
 
-def parse_fitfile(uploaded_file):
-    fitfile = FitFile(uploaded_file)
+def parse_fitfile(filename):
+    fitfile = FitFile(filename)
     while True:
         try:
             fitfile.messages
