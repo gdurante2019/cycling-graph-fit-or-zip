@@ -30,14 +30,6 @@ if ftp!="":
     ftp = float(ftp)
 else:
     st.write("Please enter your ftp in the box; otherwise, graph will not display.")
-# -
-
-# Upload file
-uploaded_file = st.file_uploader("Type or copy/paste filename, including .fit or .zip extension:  ", type=['fit', 'zip'], key='fitfile', accept_multiple_files=False)
-if uploaded_file:
-    st.write(f'You uploaded file "{uploaded_file.name}"')
-else: 
-    st.write("Please upload your workout file to generate graph.")
 
 
 # +
@@ -60,6 +52,13 @@ def process_file(uploaded_file):
 
 
 # -
+
+# Upload file
+uploaded_file = st.file_uploader("Type or copy/paste filename, including .fit or .zip extension:  ", type=['fit', 'zip'], key='fitfile', accept_multiple_files=False)
+if uploaded_file:
+    st.write(f'You uploaded file "{uploaded_file.name}"')
+else: 
+    st.write("Please upload your workout file to generate graph.")
 
 filename = process_file(uploaded_file)
 
