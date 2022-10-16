@@ -33,14 +33,12 @@ else:
 
 if uploaded_file.type == "application/zip":
     file_endswith = ".fit"
-    
-    try:
-        with ZipFile(uploaded_file, 'r') as zObject:
-            for file in zObject.namelist():
-                if file.endswith(file_endswith):
-                    zObject.extract(file)
-                    uploaded_file = file
-                    print("Extracted ", uploaded_file)
+    with ZipFile(uploaded_file, 'r') as zObject:
+        for file in zObject.namelist():
+            if file.endswith(file_endswith):
+                zObject.extract(file)
+                uploaded_file = file
+                print("Extracted ", uploaded_file)
 
 
 
