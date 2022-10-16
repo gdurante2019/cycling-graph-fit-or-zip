@@ -37,8 +37,8 @@ if uploaded_file.type == "application/zip":
                 if file.endswith(file_endswith):
                     zObject.extract(file)
             print("Extracted ", file_endswith)
-            filename = file
-            print(filename)
+            uploaded_file = file
+            print(uploaded_file)
     except:
         print("Invalid file")    
 
@@ -83,8 +83,8 @@ st.write("Scroll to the bottom to view and download graph.")
 # loop to avoid timing issues. Then we are looping through the file, append 
 # the records to a list and convert the list to a pandas dataframe."_
 
-def parse_fitfile(filename):
-    fitfile = FitFile(filename)
+def parse_fitfile(uploaded_file):
+    fitfile = FitFile(uploaded_file)
     while True:
         try:
             fitfile.messages
