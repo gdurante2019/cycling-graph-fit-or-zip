@@ -41,7 +41,6 @@ if uploaded_file.type == "application/zip":
                     zObject.extract(file)
                     uploaded_file = file
                     print("Extracted ", uploaded_file)
-    print(uploaded_file)
         
 # else:
 #     test=Image.open(file)
