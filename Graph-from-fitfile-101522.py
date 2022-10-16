@@ -20,6 +20,25 @@ from matplotlib.text import Annotation
 # Title of Streamlit app
 st.title('Cycling Workout Graph')
 
+# +
+# Enter FTP value to determine workout zones in graph
+
+ftp = st.text_input(label="Enter FTP in watts (whole numbers only):  ", max_chars=3, key='ftp')
+
+if ftp!="":
+    st.write(f"\nYour FTP has been recorded as {ftp} watts.")
+    ftp = float(ftp)
+else:
+    st.write("Please enter your ftp in the box; otherwise, graph will not display.")
+# -
+
+# Upload file
+uploaded_file = st.file_uploader("Type or copy/paste filename, including .fit or .zip extension:  ", type=['fit', 'zip'], key='fitfile', accept_multiple_files=False)
+if uploaded_file:
+    st.write(f'You uploaded file "{uploaded_file.name}"')
+else: 
+    st.write("Please upload your workout file to generate graph.")
+
 
 # +
 # Function to process zip file if necessary
@@ -42,41 +61,7 @@ def process_file(uploaded_file):
 
 # -
 
-# Upload file
-uploaded_file = st.file_uploader("Type or copy/paste filename, including .fit or .zip extension:  ", type=['fit', 'zip'], key='fitfile', accept_multiple_files=False)
-if uploaded_file:
-    st.write(f'You uploaded file "{uploaded_file.name}"')
-else: 
-    st.write("Please upload your workout file to generate graph.")
-
 filename = process_file(uploaded_file)
-
-# +
-# # If zip file, extract contents
-
-# if len(uploaded_file) > 0:
-#     if uploaded_file.type == "application/zip":
-#         file_endswith = ".fit"
-#         with ZipFile(uploaded_file, 'r') as zObject:
-#             for file in zObject.namelist():
-#                 if file.endswith(file_endswith):
-#                     zObject.extract(file)
-#                     uploaded_file = file
-#                     print("Extracted ", uploaded_file)
-
-
-
-# +
-# Enter FTP value to determine workout zones in graph
-
-ftp = st.text_input(label="Enter FTP in watts (whole numbers only):  ", max_chars=3, key='ftp')
-
-if ftp!="":
-    st.write(f"\nYour FTP has been recorded as {ftp} watts.")
-    ftp = float(ftp)
-else:
-    st.write("Please enter your ftp in the box; otherwise, graph will not display.")
-# -
 
 # Instruction to scroll down to the bottom of the page for the chart
 st.write("Scroll to the bottom to view and download graph.")
