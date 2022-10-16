@@ -30,15 +30,15 @@ else:
 # +
 # If zip file, extract contents
 
-
-if uploaded_file.type == "application/zip":
-    file_endswith = ".fit"
-    with ZipFile(uploaded_file, 'r') as zObject:
-        for file in zObject.namelist():
-            if file.endswith(file_endswith):
-                zObject.extract(file)
-                uploaded_file = file
-                print("Extracted ", uploaded_file)
+if len(uploaded_file) > 0:
+    if uploaded_file.type == "application/zip":
+        file_endswith = ".fit"
+        with ZipFile(uploaded_file, 'r') as zObject:
+            for file in zObject.namelist():
+                if file.endswith(file_endswith):
+                    zObject.extract(file)
+                    uploaded_file = file
+                    print("Extracted ", uploaded_file)
 
 
 
