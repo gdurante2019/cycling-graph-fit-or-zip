@@ -20,27 +20,33 @@ from matplotlib.text import Annotation
 # Title of Streamlit app
 st.title('Cycling Workout Graph')
 
+# +
 # Upload file
 uploaded_file = st.file_uploader("Type or copy/paste filename, including .fit or .zip extension:  ", type=['fit', 'zip'], key='fitfile')
 if uploaded_file:
     st.write(f'You uploaded file "{uploaded_file.name}"')
 else: 
     st.write("Please upload your workout file to generate graph.")
+    
+filename = uploaded_file.name
+# -
 
 # If zip file, extract contents
-if uploaded_file.type == "application/zip":
+if filename.type == "application/zip":
     file_endswith = ".fit"
     
     try:
-        with ZipFile(uploaded_file.name, 'r') as zObject:
+        with ZipFile(filename, 'r') as zObject:
             for file in zObject.namelist():
                 if file.endswith(file_endswith):
                     zObject.extract(file)
             print("Extracted ", file_endswith)
-            uploaded_file = file
-            print(uploaded_file)
+            filename = file
+            print(filename)
     except:
-        print("Invalid file")    
+        print("Invalid file")
+
+    filename = file
 
 
 # +
